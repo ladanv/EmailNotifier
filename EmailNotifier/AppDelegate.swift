@@ -10,27 +10,11 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
-        
-        let emailService = EmailService()
-        
-        emailService.fetchUnread()
-        
-        emailService.markAsRead(MCOIndexSet(index: 1314))
-        
-        //        emailService.markAsDeleted(MCOIndexSet(index: 1314))
-        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
     }
-
-
 }
 

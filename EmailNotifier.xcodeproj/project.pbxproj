@@ -15,6 +15,7 @@
 		40557AC81A343C4C00F845C2 /* EmailNotifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40557AC71A343C4C00F845C2 /* EmailNotifierTests.swift */; };
 		40557AF01A343D0200F845C2 /* MailCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AE51A343C8300F845C2 /* MailCore.framework */; };
 		40557AF21A343D0700F845C2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AF11A343D0700F845C2 /* Security.framework */; };
+		40989C2A1A34AF7F00E8491D /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40989C291A34AF7F00E8491D /* AppController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "../../mailcore2/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
 		40557AF11A343D0700F845C2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		40557AF71A343DC500F845C2 /* ObjectiveCBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveCBridgingHeader.h; sourceTree = "<group>"; };
+		40989C291A34AF7F00E8491D /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */,
 				40557AB61A343C4C00F845C2 /* AppDelegate.swift */,
 				40557AF71A343DC500F845C2 /* ObjectiveCBridgingHeader.h */,
+				40989C291A34AF7F00E8491D /* AppController.swift */,
 				4022DB3F1A34422100F35B1F /* EmailService.swift */,
 				40557AB81A343C4C00F845C2 /* Images.xcassets */,
 				40557ABA1A343C4C00F845C2 /* MainMenu.xib */,
@@ -379,6 +382,7 @@
 			files = (
 				4022DB401A34422100F35B1F /* EmailService.swift in Sources */,
 				40557AB71A343C4C00F845C2 /* AppDelegate.swift in Sources */,
+				40989C2A1A34AF7F00E8491D /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
