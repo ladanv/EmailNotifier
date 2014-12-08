@@ -13,7 +13,7 @@ class AppController: NSObject {
     @IBOutlet weak var emailListPopover: NSPopover!
     
     var statusItem : NSStatusItem!
-    var isEmailListPopoverVisible = false
+//    var isEmailListPopoverVisible = false
     
     override func awakeFromNib() {
         initStatusItem()
@@ -28,13 +28,13 @@ class AppController: NSObject {
     }
     
     func togglePopover(sender: AnyObject) {
-        if isEmailListPopoverVisible {
-            isEmailListPopoverVisible = false
-            emailListPopover.close()
-        } else {
-            isEmailListPopoverVisible = true
+//        if isEmailListPopoverVisible {
+//            isEmailListPopoverVisible = false
+//            emailListPopover.close()
+//        } else {
+//            isEmailListPopoverVisible = true
             emailListPopover.showRelativeToRect(sender.bounds, ofView: statusItem.button!, preferredEdge: NSMaxYEdge)
-        }
+//        }
     }
     
 }
