@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		40161B031A403B0C000E68A5 /* EmailTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40161B021A403B0C000E68A5 /* EmailTableCellView.swift */; };
 		40161B081A40A82A000E68A5 /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40161B071A40A82A000E68A5 /* SettingWindow.xib */; };
-		40161B0A1A40A88B000E68A5 /* AboutWindow_.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40161B091A40A88B000E68A5 /* AboutWindow_.xib */; };
+		40161B0A1A40A88B000E68A5 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40161B091A40A88B000E68A5 /* AboutWindow.xib */; };
 		40161B0C1A40A8B8000E68A5 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40161B0B1A40A8B8000E68A5 /* SettingController.swift */; };
 		4022DB1C1A343F1800F35B1F /* MailCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40557AE51A343C8300F845C2 /* MailCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4022DB401A34422100F35B1F /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022DB3F1A34422100F35B1F /* EmailService.swift */; };
@@ -112,7 +112,7 @@
 /* Begin PBXFileReference section */
 		40161B021A403B0C000E68A5 /* EmailTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailTableCellView.swift; sourceTree = "<group>"; };
 		40161B071A40A82A000E68A5 /* SettingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
-		40161B091A40A88B000E68A5 /* AboutWindow_.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow_.xib; sourceTree = "<group>"; };
+		40161B091A40A88B000E68A5 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		40161B0B1A40A8B8000E68A5 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		4022DB3F1A34422100F35B1F /* EmailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
 		40557AB11A343C4C00F845C2 /* EmailNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmailNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +174,7 @@
 		40161B041A40A76F000E68A5 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				40161B091A40A88B000E68A5 /* AboutWindow_.xib */,
+				40161B091A40A88B000E68A5 /* AboutWindow.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40161B0A1A40A88B000E68A5 /* AboutWindow_.xib in Resources */,
+				40161B0A1A40A88B000E68A5 /* AboutWindow.xib in Resources */,
 				40557AB91A343C4C00F845C2 /* Images.xcassets in Resources */,
 				40557ABC1A343C4C00F845C2 /* EmailListView.xib in Resources */,
 				40161B081A40A82A000E68A5 /* SettingWindow.xib in Resources */,
