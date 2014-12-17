@@ -59,9 +59,17 @@
                         <menu key="menu" id="8Nk-lv-5zQ">
                             <items>
                                 <menuItem state="on" image="NSActionTemplate" hidden="YES" id="1iU-k3-86U"/>
-                                <menuItem title="О программе" id="nLy-Or-JgD"/>
+                                <menuItem title="О программе" id="nLy-Or-JgD">
+                                    <connections>
+                                        <action selector="showAboutWindow:" target="aRh-we-qzC" id="dfC-BS-9zD"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem isSeparatorItem="YES" id="E5P-US-dWa"/>
-                                <menuItem title="Параметры" id="8uE-cf-Wwt"/>
+                                <menuItem title="Параметры" id="8uE-cf-Wwt">
+                                    <connections>
+                                        <action selector="showSettingWindow:" target="aRh-we-qzC" id="JlX-Z7-aSd"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem isSeparatorItem="YES" id="jt5-YC-0qJ"/>
                                 <menuItem title="Закрыть Email Notifier" id="ip3-Qy-Ic9">
                                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -92,7 +100,7 @@
                     <rect key="frame" x="0.0" y="38" width="364" height="189"/>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-353.5" y="57"/>
+            <point key="canvasLocation" x="-118.5" y="220"/>
         </customView>
         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dCI-gJ-2of">
             <rect key="frame" x="0.0" y="0.0" width="196" height="17"/>
@@ -112,7 +120,6 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="61" rowSizeStyle="automatic" viewBased="YES" id="m7F-J4-j1H">
-                        <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,14 +171,14 @@
                                                 <rect key="frame" x="233" y="2" width="61" height="19"/>
                                                 <buttonCell key="cell" type="roundRect" title="Remove" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDz-We-C0k">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="controlContent"/>
+                                                    <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-AP-T2z" userLabel="Read Button">
                                                 <rect key="frame" x="302" y="2" width="44" height="19"/>
                                                 <buttonCell key="cell" type="roundRect" title="Read" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5t4-IO-zht">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="controlContent"/>
+                                                    <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
                                         </subviews>

@@ -16,6 +16,9 @@ class EmailListController: NSObject {
     
     var emailTableViewContents: NSMutableArray!
     
+    var aboutController: AboutController!
+    var settingController: SettingController!
+    
     override func awakeFromNib() {
         initEmailListView()
         fillTableContents()
@@ -89,4 +92,18 @@ class EmailListController: NSObject {
         return nil
     }
     
+    @IBAction func showAboutWindow(sender: AnyObject) {
+        if aboutController == nil {
+            aboutController = AboutController(windowNibName: "AboutWindow")
+        }
+        aboutController.showWindow(self)
+    }
+    
+    @IBAction func showSettingWindow(sender: AnyObject) {
+        if settingController == nil {
+            settingController = SettingController(windowNibName: "SettingWindow")
+        }
+        settingController.showWindow(self)
+    }
 }
+

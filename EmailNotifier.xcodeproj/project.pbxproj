@@ -21,6 +21,7 @@
 		40557AF21A343D0700F845C2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AF11A343D0700F845C2 /* Security.framework */; };
 		40989C2A1A34AF7F00E8491D /* EmailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40989C291A34AF7F00E8491D /* EmailListController.swift */; };
 		40C5B0431A38BA4B00FD109C /* EmailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C5B0421A38BA4B00FD109C /* EmailEntity.swift */; };
+		40C69AF31A417F15009F0441 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF11A417F15009F0441 /* AboutController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		40557AF71A343DC500F845C2 /* ObjectiveCBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveCBridgingHeader.h; sourceTree = "<group>"; };
 		40989C291A34AF7F00E8491D /* EmailListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailListController.swift; sourceTree = "<group>"; };
 		40C5B0421A38BA4B00FD109C /* EmailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailEntity.swift; sourceTree = "<group>"; };
+		40C69AF11A417F15009F0441 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				40161B091A40A88B000E68A5 /* AboutWindow.xib */,
+				40C69AF11A417F15009F0441 /* AboutController.swift */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				40557AB71A343C4C00F845C2 /* AppDelegate.swift in Sources */,
 				40989C2A1A34AF7F00E8491D /* EmailListController.swift in Sources */,
 				40161B0C1A40A8B8000E68A5 /* SettingController.swift in Sources */,
+				40C69AF31A417F15009F0441 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

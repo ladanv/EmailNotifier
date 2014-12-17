@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class SettingController: NSObject {
+class SettingController: NSWindowController {
 
 }
