@@ -10,55 +10,64 @@ import Cocoa
 
 class EmailListController: NSObject {
     
-    @IBOutlet weak var contentView: NSView!
+    @IBOutlet weak var noEmailView: NSView!
     @IBOutlet weak var emailTableView: NSTableView!
-    @IBOutlet weak var noEmailTextField: NSTextField!
     
     var emailTableViewContents: NSMutableArray!
     
     var aboutController: AboutController!
     var settingController: SettingController!
     
+    var initialize = true
+    
     override func awakeFromNib() {
-        initEmailListView()
-        fillTableContents()
-        showEmailList()
+        objc_sync_enter(self)
+        if initialize {
+            initialize = false
+            initMainView()
+            startEmailCheking()
+        }
+        objc_sync_exit(self)
     }
     
-    func initEmailListView() {
-        // Painting content view wite color
-        contentView.wantsLayer = true
-        contentView.layer?.backgroundColor = NSColor.whiteColor().CGColor
-        
-        // Placing noEmailTextField in the middle of the contentView
-        noEmailTextField.frame.origin.x = (contentView.frame.width - noEmailTextField.frame.width) / 2
-        noEmailTextField.frame.origin.y = (contentView.frame.height - noEmailTextField.frame.height) / 2
+    func startEmailCheking() {
+        // TODO get email cheking interval from user settings
+        NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
+    }
+    
+    func checkEmail() {
+        emailTableViewContents = NSMutableArray()
+        let emailService = EmailService.instance
+        emailService.fetchUnread { (error, messages) -> Void in
+            if let err = error {
+                println(err.description)
+                return
+            }
+            for var i = messages.count - 1; i >= 0; i-- {
+                if let msg = messages[i] as? MCOIMAPMessage {
+                    self.emailTableViewContents.addObject(EmailEntity(message: msg))
+                }
+            }
+            self.emailTableView.reloadData()
+            self.showEmailList()
+            self.notifyUser()
+        }
+    }
+    
+    func notifyUser() {
+        if emailTableViewContents != nil && emailTableViewContents.count > 0 {
+            NSNotificationCenter.defaultCenter().postNotificationName("notifyUser", object: nil)
+        }
+    }
+    
+    func initMainView() {
+//      Painting noEmailView white
+        noEmailView.wantsLayer = true
+        noEmailView.layer?.backgroundColor = NSColor.whiteColor().CGColor
     }
     
     func showEmailList() {
-        contentView.addSubview(emailTableView)
-        emailTableView.frame = contentView.bounds
-        
-//        contentView.addSubview(noEmailTextField)
-    }
-    
-    func fillTableContents() -> NSMutableArray {
-        
-        emailTableViewContents = NSMutableArray()
-        
-        let emailEntity = EmailEntity()
-        emailEntity.sender = "sender.sender@gmail.ru"
-        emailEntity.date = NSDate()
-        emailEntity.subject = "Learning the Swift programming language"
-        emailTableViewContents.addObject(emailEntity)
-        
-        let emailEntity2 = EmailEntity()
-        emailEntity2.sender = "test.test@gmail.ru"
-        emailEntity2.date = NSDate()
-        emailEntity2.subject = "Weekend photographs"
-        emailTableViewContents.addObject(emailEntity2)
-        
-        return emailTableViewContents!
+        noEmailView.hidden = emailTableViewContents != nil && emailTableViewContents.count > 0
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> NSInteger {
@@ -69,21 +78,24 @@ class EmailListController: NSObject {
     }
     
     func tableView(tableView: NSTableView!, viewForTableColumn tableColumn: NSTableColumn!, row: NSInteger) -> NSView! {
+        if emailTableViewContents.count == 0 {
+            return nil
+        }
         if let contents = emailTableViewContents {
             let emailEntity = contents[row] as EmailEntity
             if let identifier = tableColumn.identifier {
                 if identifier == "MainCell" {
                     if let cellViewObj: AnyObject = tableView.makeViewWithIdentifier("MainCell", owner: self) {
                         let cellView = cellViewObj as EmailTableCellView
-                        cellView.senderTextField?.stringValue = emailEntity.sender!
+                        cellView.senderTextField.stringValue = emailEntity.sender!
                         
                         let dateFormatter = NSDateFormatter()
                         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
                         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
                         dateFormatter.doesRelativeDateFormatting = true
-                        cellView.dateTextField?.stringValue = dateFormatter.stringFromDate(emailEntity.date)
+                        cellView.dateTextField.stringValue = dateFormatter.stringFromDate(emailEntity.date)
                         
-                        cellView.subjectTextField?.stringValue = emailEntity.subject!
+                        cellView.subjectTextField.stringValue = emailEntity.subject!
                         return cellView
                     }
                 }
@@ -105,5 +117,19 @@ class EmailListController: NSObject {
         }
         settingController.showWindow(self)
     }
+    
+    @IBAction func reloadEmailList(sender: AnyObject) {
+        checkEmail()
+    }
+    
+    @IBAction func removeEmail(sender: AnyObject) {
+//        EmailService.markAsDeleted()
+    }
+    
+    @IBAction func markEmailAsRead(sender: AnyObject) {
+//        EmailService.markAsRead()
+    }
+    
+    
 }
 

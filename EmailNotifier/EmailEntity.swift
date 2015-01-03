@@ -11,6 +11,14 @@ class EmailEntity: NSObject {
     var date: NSDate!
     var subject: String!
     
+    override init() {
+    }
+    
+    init(message: MCOIMAPMessage) {
+        super.init()
+        self.initWithMessage(message)
+    }
+    
     func initWithMessage(message: MCOIMAPMessage) {
         sender = message.header.from.mailbox!
         subject = message.header.subject!

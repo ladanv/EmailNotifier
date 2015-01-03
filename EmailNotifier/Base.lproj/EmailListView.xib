@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication" customModule="EmailNotifier">
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
             </connections>
@@ -19,9 +19,8 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="aRh-we-qzC" customClass="EmailListController" customModule="EmailNotifier" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="fCt-G8-zza" id="UrQ-ft-nsV"/>
                 <outlet property="emailTableView" destination="m7F-J4-j1H" id="A8X-9S-nQ8"/>
-                <outlet property="noEmailTextField" destination="dCI-gJ-2of" id="qlx-sW-aK6"/>
+                <outlet property="noEmailView" destination="wCw-7k-avL" id="DiG-tj-PgB"/>
             </connections>
         </customObject>
         <viewController id="T8R-ce-he3" userLabel="Popover View Controller">
@@ -59,20 +58,19 @@
                         <menu key="menu" id="8Nk-lv-5zQ">
                             <items>
                                 <menuItem state="on" image="NSActionTemplate" hidden="YES" id="1iU-k3-86U"/>
-                                <menuItem title="О программе" id="nLy-Or-JgD">
+                                <menuItem title="About Email Notifier" id="nLy-Or-JgD">
                                     <connections>
                                         <action selector="showAboutWindow:" target="aRh-we-qzC" id="dfC-BS-9zD"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="E5P-US-dWa"/>
-                                <menuItem title="Параметры" id="8uE-cf-Wwt">
+                                <menuItem title="Settings" keyEquivalent="," id="8uE-cf-Wwt">
                                     <connections>
                                         <action selector="showSettingWindow:" target="aRh-we-qzC" id="JlX-Z7-aSd"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="jt5-YC-0qJ"/>
-                                <menuItem title="Закрыть Email Notifier" id="ip3-Qy-Ic9">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                <menuItem title="Quit Email Notifier" keyEquivalent="q" id="ip3-Qy-Ic9">
                                     <connections>
                                         <action selector="terminate:" target="-1" id="5QT-As-E5j"/>
                                     </connections>
@@ -95,124 +93,138 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="reloadEmailList:" target="aRh-we-qzC" id="qVv-tV-xAe"/>
+                    </connections>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCt-G8-zza">
-                    <rect key="frame" x="0.0" y="38" width="364" height="189"/>
+                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="63" horizontalPageScroll="10" verticalLineScroll="63" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB1-XU-4OX">
+                    <rect key="frame" x="0.0" y="37" width="359" height="188"/>
+                    <clipView key="contentView" misplaced="YES" id="wTx-rj-D4b">
+                        <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="61" rowSizeStyle="automatic" viewBased="YES" id="m7F-J4-j1H">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="MainCell" width="356" minWidth="40" maxWidth="1000" id="64G-0F-Ke2">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="fcy-KS-F0R">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView identifier="MainCell" id="MqR-30-gZf" userLabel="MainCell" customClass="EmailTableCellView" customModule="EmailNotifier" customModuleProvider="target">
+                                                <rect key="frame" x="1" y="1" width="356" height="61"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igb-dJ-4dz" userLabel="Sender">
+                                                        <rect key="frame" x="8" y="44" width="288" height="14"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="Sender" drawsBackground="YES" id="wBB-Os-uFn">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6u-6L-Vgr" userLabel="Email Subject">
+                                                        <rect key="frame" x="8" y="6" width="299" height="17"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" title="Email subject" drawsBackground="YES" id="pKU-g8-T4Q">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-6b-A9C" userLabel="Remove Button">
+                                                        <rect key="frame" x="315" y="8" width="21" height="19"/>
+                                                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDz-We-C0k">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="removeEmail:" target="aRh-we-qzC" id="TB1-2d-Hsv"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-AP-T2z" userLabel="Read Button">
+                                                        <rect key="frame" x="315" y="34" width="21" height="19"/>
+                                                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSQuickLookTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5t4-IO-zht">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="markEmailAsRead:" target="aRh-we-qzC" id="geL-OV-5hk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnM-ek-R8Z" userLabel="Date">
+                                                        <rect key="frame" x="8" y="25" width="105" height="14"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="Date" drawsBackground="YES" id="Hpi-xn-sSJ">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <connections>
+                                                    <outlet property="dateTextField" destination="nnM-ek-R8Z" id="i1W-Ho-YUp"/>
+                                                    <outlet property="senderTextField" destination="igb-dJ-4dz" id="S7O-Uj-J76"/>
+                                                    <outlet property="subjectTextField" destination="o6u-6L-Vgr" id="ivp-M9-Og7"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="aRh-we-qzC" id="okJ-xO-iM9"/>
+                                    <outlet property="delegate" destination="aRh-we-qzC" id="V3f-mr-w3D"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="8Uf-ft-Uhy">
+                        <rect key="frame" x="1" y="119" width="223" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="PHh-w3-YSx">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCw-7k-avL">
+                    <rect key="frame" x="0.0" y="38" width="359" height="187"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCI-gJ-2of">
+                            <rect key="frame" x="81" y="85" width="196" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Email list is empty" drawsBackground="YES" id="gJf-X1-nba">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-118.5" y="220"/>
+            <point key="canvasLocation" x="-257.5" y="140"/>
         </customView>
-        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dCI-gJ-2of">
-            <rect key="frame" x="0.0" y="0.0" width="196" height="17"/>
+        <customView id="hKT-gc-xAv">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Не прочитанных писем нет" drawsBackground="YES" id="gJf-X1-nba">
-                <font key="font" metaFont="system"/>
-                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            </textFieldCell>
-            <point key="canvasLocation" x="58" y="317.5"/>
-        </textField>
-        <scrollView autohidesScrollers="YES" horizontalLineScroll="63" horizontalPageScroll="10" verticalLineScroll="63" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="WB1-XU-4OX">
-            <rect key="frame" x="0.0" y="0.0" width="354" height="246"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" id="wTx-rj-D4b">
-                <rect key="frame" x="1" y="0.0" width="238" height="134"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="61" rowSizeStyle="automatic" viewBased="YES" id="m7F-J4-j1H">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
-                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                        <tableColumns>
-                            <tableColumn identifier="MainCell" width="349" minWidth="40" maxWidth="1000" id="64G-0F-Ke2">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="fcy-KS-F0R">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                <prototypeCellViews>
-                                    <tableCellView identifier="MainCell" id="MqR-30-gZf" userLabel="MainCell" customClass="EmailTableCellView" customModule="EmailNotifier" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="1" width="349" height="61"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igb-dJ-4dz" userLabel="Sender">
-                                                <rect key="frame" x="8" y="44" width="237" height="14"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="Sender" drawsBackground="YES" id="wBB-Os-uFn">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnM-ek-R8Z" userLabel="Date">
-                                                <rect key="frame" x="253" y="44" width="88" height="14"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="Date" drawsBackground="YES" id="Hpi-xn-sSJ">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6u-6L-Vgr" userLabel="Email Subject">
-                                                <rect key="frame" x="8" y="26" width="333" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="Email subject" drawsBackground="YES" id="pKU-g8-T4Q">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-6b-A9C" userLabel="Remove Button">
-                                                <rect key="frame" x="233" y="2" width="61" height="19"/>
-                                                <buttonCell key="cell" type="roundRect" title="Remove" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDz-We-C0k">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-AP-T2z" userLabel="Read Button">
-                                                <rect key="frame" x="302" y="2" width="44" height="19"/>
-                                                <buttonCell key="cell" type="roundRect" title="Read" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5t4-IO-zht">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
-                                                </buttonCell>
-                                            </button>
-                                        </subviews>
-                                        <connections>
-                                            <outlet property="dateTextField" destination="nnM-ek-R8Z" id="i1W-Ho-YUp"/>
-                                            <outlet property="senderTextField" destination="igb-dJ-4dz" id="S7O-Uj-J76"/>
-                                            <outlet property="subjectTextField" destination="o6u-6L-Vgr" id="ivp-M9-Og7"/>
-                                        </connections>
-                                    </tableCellView>
-                                </prototypeCellViews>
-                            </tableColumn>
-                        </tableColumns>
-                        <connections>
-                            <outlet property="dataSource" destination="aRh-we-qzC" id="okJ-xO-iM9"/>
-                            <outlet property="delegate" destination="aRh-we-qzC" id="V3f-mr-w3D"/>
-                        </connections>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="8Uf-ft-Uhy">
-                <rect key="frame" x="1" y="119" width="223" height="15"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="PHh-w3-YSx">
-                <rect key="frame" x="224" y="17" width="15" height="102"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <point key="canvasLocation" x="-291" y="21"/>
-        </scrollView>
+            <point key="canvasLocation" x="-212.5" y="468"/>
+        </customView>
     </objects>
     <resources>
         <image name="Globe-32" width="32" height="32"/>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>

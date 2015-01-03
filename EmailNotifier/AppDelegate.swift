@@ -13,10 +13,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var emailListPopover: NSPopover!
     
+    let emptyMailboxIcon = "Gray-Mailbox-32"
+    let fullMailboxIcon = "Black-Mailbox-32"
     var statusItem : NSStatusItem!
+    
+    var blingIconCounter = 0
+    var blingIconTimer: NSTimer!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         initStatusItem()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyUser", name: "notifyUser", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetIcon", name: "resetIcon", object: nil)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -24,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func initStatusItem() {
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        statusItem.image = NSImage(named: "Gray-Mailbox-32")
+        statusItem.image = NSImage(named: emptyMailboxIcon)
         statusItem.highlightMode = false
         statusItem.target = self
         statusItem.action = "togglePopover:"
@@ -32,6 +39,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func togglePopover(sender: AnyObject) {
         emailListPopover.showRelativeToRect(sender.bounds, ofView: statusItem.button!, preferredEdge: NSMaxYEdge)
+    }
+    
+    func notifyUser() {
+        if statusItem.image?.name() == emptyMailboxIcon {
+            blingIconCounter = 5 * 2 // bling 5 times, 2 times with black icon and 2 times with gray
+            blingIconTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "blingIcon", userInfo: nil, repeats: true)
+        }
+    }
+    
+    func blingIcon() {
+        if blingIconCounter == 0 {
+            blingIconTimer.invalidate()
+        }
+        let iconName = blingIconCounter % 2 == 0 ? fullMailboxIcon : emptyMailboxIcon
+        statusItem.image = NSImage(named: iconName)
+        blingIconCounter--
+    }
+    
+    func resetIcon() {
+        statusItem.image = NSImage(named: emptyMailboxIcon)
     }
 }
 

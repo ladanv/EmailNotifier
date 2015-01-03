@@ -22,6 +22,7 @@
 		40989C2A1A34AF7F00E8491D /* EmailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40989C291A34AF7F00E8491D /* EmailListController.swift */; };
 		40C5B0431A38BA4B00FD109C /* EmailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C5B0421A38BA4B00FD109C /* EmailEntity.swift */; };
 		40C69AF31A417F15009F0441 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF11A417F15009F0441 /* AboutController.swift */; };
+		40C69AF71A41B129009F0441 /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF61A41B129009F0441 /* SettingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		40989C291A34AF7F00E8491D /* EmailListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailListController.swift; sourceTree = "<group>"; };
 		40C5B0421A38BA4B00FD109C /* EmailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailEntity.swift; sourceTree = "<group>"; };
 		40C69AF11A417F15009F0441 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		40C69AF61A41B129009F0441 /* SettingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +166,6 @@
 		40161B011A4037FC000E68A5 /* Email List */ = {
 			isa = PBXGroup;
 			children = (
-				4022DB3F1A34422100F35B1F /* EmailService.swift */,
 				40C5B0421A38BA4B00FD109C /* EmailEntity.swift */,
 				40989C291A34AF7F00E8491D /* EmailListController.swift */,
 				40161B021A403B0C000E68A5 /* EmailTableCellView.swift */,
@@ -204,6 +205,7 @@
 		40557AB31A343C4C00F845C2 /* EmailNotifier */ = {
 			isa = PBXGroup;
 			children = (
+				40C69AF51A41AD68009F0441 /* Service */,
 				40161B011A4037FC000E68A5 /* Email List */,
 				40161B001A4037E0000E68A5 /* Setting */,
 				40161B041A40A76F000E68A5 /* About */,
@@ -254,6 +256,15 @@
 				40557AEB1A343C8300F845C2 /* unittestcpp */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		40C69AF51A41AD68009F0441 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4022DB3F1A34422100F35B1F /* EmailService.swift */,
+				40C69AF61A41B129009F0441 /* SettingService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +441,7 @@
 				40557AB71A343C4C00F845C2 /* AppDelegate.swift in Sources */,
 				40989C2A1A34AF7F00E8491D /* EmailListController.swift in Sources */,
 				40161B0C1A40A8B8000E68A5 /* SettingController.swift in Sources */,
+				40C69AF71A41B129009F0441 /* SettingService.swift in Sources */,
 				40C69AF31A417F15009F0441 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
