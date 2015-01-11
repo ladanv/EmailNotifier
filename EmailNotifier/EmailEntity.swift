@@ -20,8 +20,12 @@ class EmailEntity: NSObject {
     }
     
     func initWithMessage(message: MCOIMAPMessage) {
-        sender = message.header.from.mailbox!
-        subject = message.header.subject!
-        date = message.header.date!
+        sender = message.header.sender.displayName
+        if let subject = message.header.subject {
+            self.subject = subject
+        } else {
+            self.subject = "No subject"
+        }
+        date = message.header.date
     }
 }

@@ -87,7 +87,7 @@ class EmailListController: NSObject {
                 if identifier == "MainCell" {
                     if let cellViewObj: AnyObject = tableView.makeViewWithIdentifier("MainCell", owner: self) {
                         let cellView = cellViewObj as EmailTableCellView
-                        cellView.senderTextField.stringValue = emailEntity.sender!
+                        cellView.senderTextField.stringValue = emailEntity.sender
                         
                         let dateFormatter = NSDateFormatter()
                         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -95,7 +95,7 @@ class EmailListController: NSObject {
                         dateFormatter.doesRelativeDateFormatting = true
                         cellView.dateTextField.stringValue = dateFormatter.stringFromDate(emailEntity.date)
                         
-                        cellView.subjectTextField.stringValue = emailEntity.subject!
+                        cellView.subjectTextField.stringValue = emailEntity.subject
                         return cellView
                     }
                 }

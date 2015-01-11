@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Vitaliy.Ladan. All rights reserved.
 //
 
+import KeychainAccess
+
 class SettingService {
        
     class var email: NSString? {
@@ -20,10 +22,12 @@ class SettingService {
     // TODO use keychain
     class var password: NSString? {
         get {
-            return "***"
+            let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
+            return keychain["emailpassword"]
         }
         set {
-            
+            let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
+            keychain["emailpassword"] = newValue
         }
     }
     
