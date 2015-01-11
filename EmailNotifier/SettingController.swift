@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+//import KeychainAccess
 
 class SettingController: NSWindowController {
     @IBOutlet weak var emailTextField: NSTextField!
@@ -43,8 +44,11 @@ class SettingController: NSWindowController {
     
     func saveSettings() {
         SettingService.email = emailTextField.stringValue
-        SettingService.password = passwordSecureTextfield.stringValue
+//        SettingService.password = passwordSecureTextfield.stringValue
         SettingService.host = hostTextField.stringValue
         SettingService.port = portTextField.stringValue
+        
+//        let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
+//        keychain[SettingService.email] = passwordSecureTextfield.stringValue
     }
 }
