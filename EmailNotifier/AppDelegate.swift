@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         initStatusItem()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyUser", name: "notifyUser", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetIcon", name: "resetIcon", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetStatusIcon", name: "resetStatusIcon", object: nil)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         blingIconCounter--
     }
     
-    func resetIcon() {
+    func resetStatusIcon() {
         statusItem.image = NSImage(named: emptyMailboxIcon)
     }
 }

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="emailTextField" destination="sSB-Lc-Tkf" id="I81-XW-j9O"/>
                 <outlet property="hostTextField" destination="SF3-4U-YBt" id="whX-LV-SJN"/>
+                <outlet property="intervalPopUpButton" destination="HWh-A4-D1C" id="MeS-61-Thp"/>
                 <outlet property="passwordSecureTextfield" destination="dsT-AZ-bVl" id="a8M-5K-x4e"/>
                 <outlet property="portTextField" destination="eK1-Qe-zDo" id="DS9-b3-g3k"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="Xe1-RH-tfh"/>
@@ -17,16 +18,16 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="422" height="189"/>
+            <rect key="contentRect" x="196" y="240" width="422" height="222"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="422" height="189"/>
             <value key="maxSize" type="size" width="422" height="189"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="422" height="189"/>
+                <rect key="frame" x="0.0" y="0.0" width="422" height="222"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-AZ-bVl">
-                        <rect key="frame" x="156" y="115" width="246" height="22"/>
+                        <rect key="frame" x="156" y="148" width="246" height="22"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="V7M-gr-Hyr">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -37,7 +38,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYp-YG-8P6">
-                        <rect key="frame" x="85" y="118" width="65" height="17"/>
+                        <rect key="frame" x="85" y="151" width="65" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password" id="6eC-8W-yWY">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +46,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZr-L6-Cch">
-                        <rect key="frame" x="112" y="150" width="38" height="17"/>
+                        <rect key="frame" x="112" y="183" width="38" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Email" id="bgX-2b-dRf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +54,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9BV-uj-izE">
-                        <rect key="frame" x="120" y="54" width="30" height="17"/>
+                        <rect key="frame" x="120" y="87" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Port" id="7EB-hd-YGF">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -61,7 +62,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-Qe-zDo">
-                        <rect key="frame" x="156" y="51" width="246" height="22"/>
+                        <rect key="frame" x="156" y="84" width="246" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="993" drawsBackground="YES" usesSingleLineMode="YES" id="PZB-ry-LAg">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="M3L-ik-Dcp">
                                 <real key="minimum" value="10"/>
@@ -76,7 +77,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSB-Lc-Tkf">
-                        <rect key="frame" x="156" y="147" width="246" height="22"/>
+                        <rect key="frame" x="156" y="180" width="246" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="user.name@gmail.com" drawsBackground="YES" usesSingleLineMode="YES" id="6JQ-AC-VT0">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -84,7 +85,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SF3-4U-YBt">
-                        <rect key="frame" x="156" y="83" width="246" height="22"/>
+                        <rect key="frame" x="156" y="116" width="246" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="imap.gmail.com" drawsBackground="YES" usesSingleLineMode="YES" id="BCJ-7x-CKc">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -92,8 +93,32 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pw-2P-fPW">
-                        <rect key="frame" x="18" y="86" width="132" height="17"/>
+                        <rect key="frame" x="18" y="119" width="132" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Incoming mail server" id="UXN-sh-q7S">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-A4-D1C">
+                        <rect key="frame" x="154" y="50" width="251" height="26"/>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Zwt-EZ-fzX">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="KCn-T8-6QU">
+                                <items>
+                                    <menuItem title="1 minute" tag="1" id="usg-Qg-8jW"/>
+                                    <menuItem title="5 minutes" tag="5" id="CZV-Jw-oBj"/>
+                                    <menuItem title="10 minutes" tag="10" id="4WK-8a-MKO"/>
+                                    <menuItem title="20 minutes" tag="20" id="76L-Tr-nu9"/>
+                                    <menuItem title="30 minutes" tag="30" id="wRa-4c-ZSm"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PU0-uV-4v6">
+                        <rect key="frame" x="69" y="55" width="81" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Check every" id="Vym-N2-pL4">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -114,7 +139,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="6xr-CO-4Oi"/>
             </connections>
-            <point key="canvasLocation" x="104" y="199.5"/>
+            <point key="canvasLocation" x="104" y="216"/>
         </window>
     </objects>
 </document>

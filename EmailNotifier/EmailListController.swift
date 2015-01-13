@@ -30,9 +30,11 @@ class EmailListController: NSObject {
         objc_sync_exit(self)
     }
     
+    // TODO start checking when apply button pressed in settings window
+    // Save timer in an instance variable, invalidate and start it with new interval settings
     func startEmailCheking() {
-        // TODO get email cheking interval from user settings
-        NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
+        let minutes = NSTimeInterval(SettingService.interval) * 60
+        NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
     }
     
     func checkEmail() {
@@ -48,7 +50,6 @@ class EmailListController: NSObject {
                     self.emailTableViewContents.addObject(EmailEntity(message: msg))
                 }
             }
-            self.emailTableView.reloadData()
             self.showEmailList()
             self.notifyUser()
         }
@@ -67,7 +68,13 @@ class EmailListController: NSObject {
     }
     
     func showEmailList() {
-        noEmailView.hidden = emailTableViewContents != nil && emailTableViewContents.count > 0
+//        noEmailView.hidden = emailTableViewContents != nil && emailTableViewContents.count > 0
+        if emailTableViewContents != nil && emailTableViewContents.count > 0 {
+            noEmailView.hidden = true
+            emailTableView.reloadData()
+        } else {
+            noEmailView.hidden = false
+        }
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> NSInteger {
@@ -123,13 +130,48 @@ class EmailListController: NSObject {
     }
     
     @IBAction func removeEmail(sender: AnyObject) {
-//        EmailService.markAsDeleted()
+        let rowIndex = emailTableView.rowForView(sender as NSView)
+        let emailEntity = getEntityForRow(rowIndex)
+        let emailService = EmailService.instance
+        emailService.markAsDeleted(emailEntity.uid, { (error: NSError?) -> Void in
+            if let errorMsg = error {
+                println(errorMsg)
+            } else {
+                self.removeEmailFromListViewByIndex(rowIndex)
+                self.showEmailList()
+                self.resetStatusIcon()
+            }
+        })
     }
     
     @IBAction func markEmailAsRead(sender: AnyObject) {
-//        EmailService.markAsRead()
+        let rowIndex = emailTableView.rowForView(sender as NSView)
+        let emailEntity = getEntityForRow(rowIndex)
+        let emailService = EmailService.instance
+        emailService.markAsRead(emailEntity.uid, { (error: NSError?) -> Void in
+            if let errorMsg = error {
+                println(errorMsg)
+            } else {
+                self.removeEmailFromListViewByIndex(rowIndex)
+                self.showEmailList()
+                self.resetStatusIcon()
+            }
+        })
     }
     
+    func getEntityForRow(row: Int) -> EmailEntity {
+        return emailTableViewContents.objectAtIndex(row) as EmailEntity
+    }
+    
+    func removeEmailFromListViewByIndex(index: Int) -> Void {
+        emailTableViewContents.removeObjectAtIndex(index)
+    }
+    
+    func resetStatusIcon() {
+        if emailTableViewContents.count == 0 {
+            NSNotificationCenter.defaultCenter().postNotificationName("resetStatusIcon", object: nil)
+        }
+    }
     
 }
 

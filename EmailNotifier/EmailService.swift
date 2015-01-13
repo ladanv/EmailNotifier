@@ -55,14 +55,13 @@ class EmailService {
         
             let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: MCOIMAPMessagesRequestKind.Headers, uids: indexSet)
             
-            
             fetchOperation.start { (err: NSError!, msgs: [AnyObject]!, vanished: MCOIndexSet!) -> Void in
                 callback(error: err, messages: msgs)
             }
         }
     }
     
-    func markAsRead(idx: UInt64, callback: (error: NSError) -> Void) {
+    func markAsRead(idx: UInt64, callback: (error: NSError?) -> Void) {
         
         let saveFlagOperation = session.storeFlagsOperationWithFolder(self.folder, uids: MCOIndexSet(index: idx), kind: MCOIMAPStoreFlagsRequestKind.Add, flags: MCOMessageFlag.Seen)
         
@@ -72,7 +71,7 @@ class EmailService {
         
     }
     
-    func markAsDeleted(idx: UInt64, callback: (error: NSError) -> Void) {
+    func markAsDeleted(idx: UInt64, callback: (error: NSError?) -> Void) {
        
         let saveFlagOperation = session.storeFlagsOperationWithFolder(self.folder, uids: MCOIndexSet(index: idx), kind: MCOIMAPStoreFlagsRequestKind.Add, flags: MCOMessageFlag.Deleted)
        

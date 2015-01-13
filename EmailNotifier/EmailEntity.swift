@@ -10,6 +10,7 @@ class EmailEntity: NSObject {
     var sender: String!
     var date: NSDate!
     var subject: String!
+    var uid: UInt64!
     
     override init() {
     }
@@ -27,5 +28,6 @@ class EmailEntity: NSObject {
             self.subject = "No subject"
         }
         date = message.header.date
+        uid = UInt64(message.uid)
     }
 }

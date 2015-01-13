@@ -49,4 +49,16 @@ class SettingService {
         }
     }
     
+    class var interval: Int {
+        get {
+            if let intervalValue = NSUserDefaults.standardUserDefaults().valueForKey("interval") as? Int {
+                return intervalValue
+            }
+            return 5
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: "interval")
+        }
+    }
+    
 }

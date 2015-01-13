@@ -14,6 +14,7 @@ class SettingController: NSWindowController {
     @IBOutlet weak var passwordSecureTextfield: NSSecureTextField!
     @IBOutlet weak var hostTextField: NSTextField!
     @IBOutlet weak var portTextField: NSTextField!
+    @IBOutlet weak var intervalPopUpButton: NSPopUpButton!
     
     override func showWindow(sender: AnyObject?) {
         super.showWindow(sender)
@@ -29,6 +30,7 @@ class SettingController: NSWindowController {
         if let port = SettingService.port {
             portTextField.stringValue = port
         }
+        intervalPopUpButton.selectItemWithTag(SettingService.interval)
     }
     
     @IBAction func applySettings(sender: AnyObject) {
@@ -47,5 +49,6 @@ class SettingController: NSWindowController {
         SettingService.password = passwordSecureTextfield.stringValue
         SettingService.host = hostTextField.stringValue
         SettingService.port = portTextField.stringValue
+        SettingService.interval = intervalPopUpButton.selectedTag()
     }
 }
