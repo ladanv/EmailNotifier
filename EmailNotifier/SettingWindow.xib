@@ -21,7 +21,7 @@
             <rect key="contentRect" x="196" y="240" width="422" height="222"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="422" height="189"/>
-            <value key="maxSize" type="size" width="422" height="189"/>
+            <value key="maxSize" type="size" width="423" height="190"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="422" height="222"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -102,14 +102,14 @@
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-A4-D1C">
                         <rect key="frame" x="154" y="50" width="251" height="26"/>
-                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Zwt-EZ-fzX">
+                        <popUpButtonCell key="cell" type="push" title="10 minutes" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="10" imageScaling="proportionallyDown" inset="2" selectedItem="4WK-8a-MKO" id="Zwt-EZ-fzX">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="KCn-T8-6QU">
                                 <items>
                                     <menuItem title="1 minute" tag="1" id="usg-Qg-8jW"/>
                                     <menuItem title="5 minutes" tag="5" id="CZV-Jw-oBj"/>
-                                    <menuItem title="10 minutes" tag="10" id="4WK-8a-MKO"/>
+                                    <menuItem title="10 minutes" state="on" tag="10" id="4WK-8a-MKO"/>
                                     <menuItem title="20 minutes" tag="20" id="76L-Tr-nu9"/>
                                     <menuItem title="30 minutes" tag="30" id="wRa-4c-ZSm"/>
                                 </items>

@@ -9,6 +9,10 @@
 import KeychainAccess
 
 class SettingService {
+    
+    class var defaultInterval: Int {
+        return 10
+    }
        
     class var email: NSString? {
         get {
@@ -19,16 +23,14 @@ class SettingService {
         }
     }
     
-    // TODO use keychain
-    class var password: NSString? {
-        get {
-            let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
-            return keychain["emailpassword"]
-        }
-        set {
-            let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
-            keychain["emailpassword"] = newValue
-        }
+    class func getPassword() -> FailableOf<String> {
+        let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
+        return keychain.getStringOrError("emailpassword")
+    }
+    
+    class func setPassword(newValue: String) -> NSError? {
+        let keychain = Keychain(service: "com.github.ladanv.emailnotifier")
+        return keychain.set(newValue, key: "emailpassword") 
     }
     
     class var host: NSString? {
@@ -54,7 +56,7 @@ class SettingService {
             if let intervalValue = NSUserDefaults.standardUserDefaults().valueForKey("interval") as? Int {
                 return intervalValue
             }
-            return 5
+            return defaultInterval
         }
         set {
             NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: "interval")

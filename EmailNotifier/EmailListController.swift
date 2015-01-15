@@ -20,21 +20,35 @@ class EmailListController: NSObject {
     
     var initialize = true
     
+    var emailCheckingTimer: NSTimer?
+    
     override func awakeFromNib() {
         objc_sync_enter(self)
         if initialize {
             initialize = false
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "startEmailChecking", name: "restartEmailChecking", object: nil)
+            
             initMainView()
-            startEmailCheking()
+            
+            let emailService = EmailService.instance
+            if let error = emailService.initWithSettingService() {
+                println("Error in EmailListController:awakeFromNib -> \(error.localizedDescription)")
+            } else {
+                startEmailChecking()
+            }
+            
         }
         objc_sync_exit(self)
     }
     
-    // TODO start checking when apply button pressed in settings window
-    // Save timer in an instance variable, invalidate and start it with new interval settings
-    func startEmailCheking() {
+    func startEmailChecking() {
         let minutes = NSTimeInterval(SettingService.interval) * 60
-        NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
+        if let isTimerValid = emailCheckingTimer?.valid {
+            emailCheckingTimer!.invalidate()
+            println("The timer has been invalidated. New interval is \(SettingService.interval)")
+        }
+        emailCheckingTimer = NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
     }
     
     func checkEmail() {

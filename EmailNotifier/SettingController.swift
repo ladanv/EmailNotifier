@@ -21,8 +21,13 @@ class SettingController: NSWindowController {
         if let email = SettingService.email {
             emailTextField.stringValue = email
         }
-        if let password = SettingService.password {
-            passwordSecureTextfield.stringValue = password
+        let failable = SettingService.getPassword()
+        if failable.failed {
+            println("Error in SettingController:showWindow -> \(failable.error)")
+        } else {
+            if let value = failable.value {
+                passwordSecureTextfield.stringValue = value
+            }
         }
         if let host = SettingService.host {
             hostTextField.stringValue = host
@@ -36,8 +41,14 @@ class SettingController: NSWindowController {
     @IBAction func applySettings(sender: AnyObject) {
         saveSettings()
         let emailService = EmailService.instance
-        emailService.initWithSettingService()
-        emailService.testConnection()
+        if let error = emailService.initWithSettingService() {
+            println("Error in SettingController:applySettings -> \(error.localizedDescription)")
+        }
+        if emailService.testConnection() {
+            NSNotificationCenter.defaultCenter().postNotificationName("restartEmailChecking", object: nil)
+        } else {
+            showError(messageText: "Invalid connection", informativeText: "Could not connect.")
+        }
     }
     
     func windowWillClose(notification: NSNotification) {
@@ -46,9 +57,12 @@ class SettingController: NSWindowController {
     
     func saveSettings() {
         SettingService.email = emailTextField.stringValue
-        SettingService.password = passwordSecureTextfield.stringValue
+        if let error = SettingService.setPassword(passwordSecureTextfield.stringValue) {
+            println("Error in SettingController:saveSetting -> \(error.localizedDescription)")
+        }
         SettingService.host = hostTextField.stringValue
         SettingService.port = portTextField.stringValue
         SettingService.interval = intervalPopUpButton.selectedTag()
     }
+    
 }

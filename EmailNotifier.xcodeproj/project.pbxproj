@@ -22,6 +22,7 @@
 		40C5B0431A38BA4B00FD109C /* EmailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C5B0421A38BA4B00FD109C /* EmailEntity.swift */; };
 		40C69AF31A417F15009F0441 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF11A417F15009F0441 /* AboutController.swift */; };
 		40C69AF71A41B129009F0441 /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF61A41B129009F0441 /* SettingService.swift */; };
+		40C85AB01A66C90900E14B40 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85AAF1A66C90900E14B40 /* Alert.swift */; };
 		40CF58101A624F0F00822244 /* EmailListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CF580F1A624F0F00822244 /* EmailListView.xib */; };
 		40CF584B1A6256C100822244 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CF584A1A6256C100822244 /* KeychainAccess.framework */; };
 		40CF584D1A62574600822244 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40CF584A1A6256C100822244 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -134,6 +135,7 @@
 		40C5B0421A38BA4B00FD109C /* EmailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailEntity.swift; sourceTree = "<group>"; };
 		40C69AF11A417F15009F0441 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		40C69AF61A41B129009F0441 /* SettingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
+		40C85AAF1A66C90900E14B40 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		40CF580F1A624F0F00822244 /* EmailListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailListView.xib; sourceTree = "<group>"; };
 		40CF584A1A6256C100822244 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../KeychainAccess/Lib/build/Debug/KeychainAccess.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 		40557AB31A343C4C00F845C2 /* EmailNotifier */ = {
 			isa = PBXGroup;
 			children = (
+				40C85AA71A66C8F900E14B40 /* Util */,
 				40C69AF51A41AD68009F0441 /* Service */,
 				40161B011A4037FC000E68A5 /* Email List */,
 				40161B001A4037E0000E68A5 /* Setting */,
@@ -271,6 +274,14 @@
 				40C69AF61A41B129009F0441 /* SettingService.swift */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		40C85AA71A66C8F900E14B40 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				40C85AAF1A66C90900E14B40 /* Alert.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C85AB01A66C90900E14B40 /* Alert.swift in Sources */,
 				4022DB401A34422100F35B1F /* EmailService.swift in Sources */,
 				40161B031A403B0C000E68A5 /* EmailTableCellView.swift in Sources */,
 				40C5B0431A38BA4B00FD109C /* EmailEntity.swift in Sources */,

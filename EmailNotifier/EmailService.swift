@@ -18,12 +18,10 @@ class EmailService {
         return Static.instance
     }
     
-    init() {
-        self.initWithSettingService()
-    }
-    
-    func initWithSettingService() {
+    func initWithSettingService() -> NSError? {
         session = MCOIMAPSession()
+        session.connectionType = MCOConnectionType.TLS
+        
         if let port = (SettingService.port as String).toInt() {
             session.port = UInt32(port)
         }
@@ -33,10 +31,15 @@ class EmailService {
         if let email = SettingService.email {
             session.username = email
         }
-        if let password = SettingService.password {
-            session.password = password
+        let failable = SettingService.getPassword()
+        if failable.failed {
+            println("Error in EmailService:InitWithSettingService -> \(failable.error)")
+            return failable.error
+        } else {
+            session.password = failable.value
         }
-        session.connectionType = MCOConnectionType.TLS
+        
+        return nil
     }
     
     func fetchUnread(callback: (error: NSError?, messages: [AnyObject]!) -> Void) {
