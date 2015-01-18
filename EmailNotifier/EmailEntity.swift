@@ -28,7 +28,7 @@ class EmailEntity: NSObject {
         } else {
             sender = "No sender"
         }
-        if let subject = message.header.subject {
+        if let subject = message.header?.subject {
             self.subject = subject
         } else {
             self.subject = "No subject"
