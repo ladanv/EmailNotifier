@@ -46,7 +46,6 @@ class EmailListController: NSObject {
         let minutes = NSTimeInterval(SettingService.interval) * 60
         if let isTimerValid = emailCheckingTimer?.valid {
             emailCheckingTimer!.invalidate()
-            println("The timer has been invalidated. New interval is \(SettingService.interval)")
         }
         emailCheckingTimer = NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "doCheckEmail", userInfo: nil, repeats: true)
     }

@@ -21,7 +21,13 @@ class EmailEntity: NSObject {
     }
     
     func initWithMessage(message: MCOIMAPMessage) {
-        sender = message.header.sender.displayName
+        if let s = message.header?.sender?.displayName {
+            sender = s
+        } else if let s = message.header?.from?.displayName {
+            sender = s
+        } else {
+            sender = "No sender"
+        }
         if let subject = message.header.subject {
             self.subject = subject
         } else {
