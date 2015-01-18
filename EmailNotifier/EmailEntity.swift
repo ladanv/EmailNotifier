@@ -21,12 +21,12 @@ class EmailEntity: NSObject {
     }
     
     func initWithMessage(message: MCOIMAPMessage) {
-        if let s = message.header?.sender?.displayName {
-            sender = s
-        } else if let s = message.header?.from?.displayName {
-            sender = s
+        if let sender = message.header?.sender?.displayName {
+            self.sender = sender
+        } else if let sender = message.header?.from?.displayName {
+            self.sender = sender
         } else {
-            sender = "No sender"
+            self.sender = "No sender"
         }
         if let subject = message.header?.subject {
             self.subject = subject
