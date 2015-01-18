@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem : NSStatusItem!
     
     var blingIconCounter = 0
-    var blingIconTimer: NSTimer!
+    var blingIconTimer: NSTimer?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         initStatusItem()
@@ -43,21 +43,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func notifyUser() {
         if statusItem.image?.name() == emptyMailboxIcon {
-            blingIconCounter = 5 * 2 // bling 5 times, 2 times with black icon and 2 times with gray
-            blingIconTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "blingIcon", userInfo: nil, repeats: true)
+            if emailListPopover.shown {
+                statusItem.image = NSImage(named: fullMailboxIcon)
+                return
+            }            
+            if let timer = blingIconTimer {
+                if !timer.valid {
+                    startBlingingIcon()
+                }
+            } else {
+                startBlingingIcon()
+            }
         }
+    }
+    
+    func startBlingingIcon() {
+        blingIconCounter = 5 * 2 // bling 5 times, 2 times with black icon and 2 times with gray
+        blingIconTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "blingIcon", userInfo: nil, repeats: true)
     }
     
     func blingIcon() {
         if blingIconCounter == 0 {
-            blingIconTimer.invalidate()
-        }
+            stopBlingingIcon()
+        } 
         let iconName = blingIconCounter % 2 == 0 ? fullMailboxIcon : emptyMailboxIcon
         statusItem.image = NSImage(named: iconName)
         blingIconCounter--
     }
     
+    func stopBlingingIcon() {
+        if let timer = blingIconTimer {
+            timer.invalidate()
+        }
+    }
+    
     func resetStatusIcon() {
+        stopBlingingIcon()
         statusItem.image = NSImage(named: emptyMailboxIcon)
     }
 }

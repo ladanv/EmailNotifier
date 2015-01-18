@@ -48,20 +48,29 @@ class EmailListController: NSObject {
             emailCheckingTimer!.invalidate()
             println("The timer has been invalidated. New interval is \(SettingService.interval)")
         }
-        emailCheckingTimer = NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "checkEmail", userInfo: nil, repeats: true)
+        emailCheckingTimer = NSTimer.scheduledTimerWithTimeInterval(minutes, target: self, selector: "doCheckEmail", userInfo: nil, repeats: true)
     }
     
-    func checkEmail() {
+    func doCheckEmail() {
+        checkEmail(nil)
+    }
+    
+    func checkEmail(callback: (() -> Void)?) {
         emailTableViewContents = NSMutableArray()
         let emailService = EmailService.instance
         emailService.fetchUnread { (error, messages) -> Void in
+            if let callbackFn = callback {
+                callbackFn()
+            }
             if let err = error {
                 println(err.description)
                 return
             }
-            for var i = messages.count - 1; i >= 0; i-- {
-                if let msg = messages[i] as? MCOIMAPMessage {
-                    self.emailTableViewContents.addObject(EmailEntity(message: msg))
+            if let msgs = messages {
+                for var i = msgs.count - 1; i >= 0; i-- {
+                    if let msg = msgs[i] as? MCOIMAPMessage {
+                        self.emailTableViewContents.addObject(EmailEntity(message: msg))
+                    }
                 }
             }
             self.showEmailList()
@@ -82,13 +91,8 @@ class EmailListController: NSObject {
     }
     
     func showEmailList() {
-//        noEmailView.hidden = emailTableViewContents != nil && emailTableViewContents.count > 0
-        if emailTableViewContents != nil && emailTableViewContents.count > 0 {
-            noEmailView.hidden = true
-            emailTableView.reloadData()
-        } else {
-            noEmailView.hidden = false
-        }
+        noEmailView.hidden = emailTableViewContents != nil && emailTableViewContents.count > 0
+        emailTableView.reloadData()
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> NSInteger {
@@ -139,33 +143,33 @@ class EmailListController: NSObject {
         settingController.showWindow(self)
     }
     
-    @IBAction func reloadEmailList(sender: AnyObject) {
-        checkEmail()
-    }
-    
-    @IBAction func removeEmail(sender: AnyObject) {
-        let rowIndex = emailTableView.rowForView(sender as NSView)
-        let emailEntity = getEntityForRow(rowIndex)
-        let emailService = EmailService.instance
-        emailService.markAsDeleted(emailEntity.uid, { (error: NSError?) -> Void in
-            if let errorMsg = error {
-                println(errorMsg)
-            } else {
-                self.removeEmailFromListViewByIndex(rowIndex)
-                self.showEmailList()
-                self.resetStatusIcon()
-            }
+    @IBAction func reloadEmailList(button: NSButton) {
+        button.enabled = false
+        checkEmail({() -> Void in
+           button.enabled = true
         })
     }
     
-    @IBAction func markEmailAsRead(sender: AnyObject) {
-        let rowIndex = emailTableView.rowForView(sender as NSView)
-        let emailEntity = getEntityForRow(rowIndex)
+    @IBAction func removeEmail(button: NSButton) {
         let emailService = EmailService.instance
-        emailService.markAsRead(emailEntity.uid, { (error: NSError?) -> Void in
+        markEmail(button, markFn: emailService.markAsDeleted)
+    }
+    
+    @IBAction func markEmailAsRead(button: NSButton) {
+        let emailService = EmailService.instance
+        markEmail(button, markFn: emailService.markAsRead)
+    }
+    
+    func markEmail(button: NSButton, markFn: (idx: UInt64, callback: (NSError?) -> Void) -> Void) {
+        button.enabled = false
+        let rowIndex = emailTableView.rowForView(button)
+        let emailEntity = getEntityForRow(rowIndex)
+        markFn(idx: emailEntity.uid, { (error: NSError?) -> Void in
+            button.enabled = true
             if let errorMsg = error {
                 println(errorMsg)
             } else {
+                let rowIndex = self.emailTableView.rowForView(button)
                 self.removeEmailFromListViewByIndex(rowIndex)
                 self.showEmailList()
                 self.resetStatusIcon()
@@ -178,7 +182,9 @@ class EmailListController: NSObject {
     }
     
     func removeEmailFromListViewByIndex(index: Int) -> Void {
-        emailTableViewContents.removeObjectAtIndex(index)
+        if index < emailTableViewContents.count {
+            emailTableViewContents.removeObjectAtIndex(index)
+        }
     }
     
     func resetStatusIcon() {

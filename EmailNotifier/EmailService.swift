@@ -42,20 +42,17 @@ class EmailService {
         return nil
     }
     
-    func fetchUnread(callback: (error: NSError?, messages: [AnyObject]!) -> Void) {
+    func fetchUnread(callback: (error: NSError?, messages: [AnyObject]?) -> Void) {
         
         let searchOperation = session.searchExpressionOperationWithFolder(self.folder, expression: MCOIMAPSearchExpression.searchUnread())
         
         searchOperation.start { (err: NSError!, indexSet: MCOIndexSet!) -> Void in
         
-            if err != nil {
+            if err != nil || indexSet.count() == 0 {
                 callback(error: err, messages: nil)
                 return
             }
-            if indexSet.count() == 0 {
-                return
-            }
-        
+            
             let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: MCOIMAPMessagesRequestKind.Headers, uids: indexSet)
             
             fetchOperation.start { (err: NSError!, msgs: [AnyObject]!, vanished: MCOIndexSet!) -> Void in
