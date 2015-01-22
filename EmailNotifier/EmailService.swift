@@ -22,11 +22,15 @@ class EmailService {
         session = MCOIMAPSession()
         session.connectionType = MCOConnectionType.TLS
         
-        if let port = (SettingService.port as String).toInt() {
+        if let port = (SettingService.port as? String)?.toInt() {
             session.port = UInt32(port)
+        } else {
+            session.port = 993
         }
         if let host = SettingService.host {
             session.hostname = host
+        } else {
+            session.hostname = "imap.gmail.com"
         }
         if let email = SettingService.email {
             session.username = email

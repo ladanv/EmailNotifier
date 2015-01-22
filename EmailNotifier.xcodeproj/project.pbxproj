@@ -11,21 +11,21 @@
 		40161B081A40A82A000E68A5 /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40161B071A40A82A000E68A5 /* SettingWindow.xib */; };
 		40161B0A1A40A88B000E68A5 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40161B091A40A88B000E68A5 /* AboutWindow.xib */; };
 		40161B0C1A40A8B8000E68A5 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40161B0B1A40A8B8000E68A5 /* SettingController.swift */; };
-		4022DB1C1A343F1800F35B1F /* MailCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40557AE51A343C8300F845C2 /* MailCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4022DB401A34422100F35B1F /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022DB3F1A34422100F35B1F /* EmailService.swift */; };
 		40557AB71A343C4C00F845C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40557AB61A343C4C00F845C2 /* AppDelegate.swift */; };
 		40557AB91A343C4C00F845C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40557AB81A343C4C00F845C2 /* Images.xcassets */; };
 		40557AC81A343C4C00F845C2 /* EmailNotifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40557AC71A343C4C00F845C2 /* EmailNotifierTests.swift */; };
-		40557AF01A343D0200F845C2 /* MailCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AE51A343C8300F845C2 /* MailCore.framework */; };
-		40557AF21A343D0700F845C2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AF11A343D0700F845C2 /* Security.framework */; };
 		40989C2A1A34AF7F00E8491D /* EmailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40989C291A34AF7F00E8491D /* EmailListController.swift */; };
 		40C5B0431A38BA4B00FD109C /* EmailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C5B0421A38BA4B00FD109C /* EmailEntity.swift */; };
 		40C69AF31A417F15009F0441 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF11A417F15009F0441 /* AboutController.swift */; };
 		40C69AF71A41B129009F0441 /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C69AF61A41B129009F0441 /* SettingService.swift */; };
 		40C85AB01A66C90900E14B40 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85AAF1A66C90900E14B40 /* Alert.swift */; };
 		40CF58101A624F0F00822244 /* EmailListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CF580F1A624F0F00822244 /* EmailListView.xib */; };
-		40CF584B1A6256C100822244 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CF584A1A6256C100822244 /* KeychainAccess.framework */; };
-		40CF584D1A62574600822244 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40CF584A1A6256C100822244 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D12B027D1A70BD1A0047F264 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40557AF11A343D0700F845C2 /* Security.framework */; };
+		D12B02801A70BD390047F264 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12B027E1A70BD340047F264 /* KeychainAccess.framework */; };
+		D12B02811A70BD390047F264 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D12B027E1A70BD340047F264 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D12B02841A70BD890047F264 /* MailCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12B02821A70BD850047F264 /* MailCore.framework */; };
+		D12B02851A70BD890047F264 /* MailCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D12B02821A70BD850047F264 /* MailCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,69 +36,6 @@
 			remoteGlobalIDString = 40557AB01A343C4C00F845C2;
 			remoteInfo = EmailNotifier;
 		};
-		40557ADC1A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C64EA537169E772200778456;
-			remoteInfo = "static mailcore2 osx";
-		};
-		40557ADE1A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6BA2C191705F4E6003F0E9E;
-			remoteInfo = "static mailcore2 ios";
-		};
-		40557AE01A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C64EA78C169F259200778456;
-			remoteInfo = tests;
-		};
-		40557AE21A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6A81B911706840C00882C15;
-			remoteInfo = "test-ios";
-		};
-		40557AE41A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6BD288D170BD71100A91AC1;
-			remoteInfo = "mailcore osx";
-		};
-		40557AE61A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27780C3A19CF9CD100C77E44;
-			remoteInfo = "mailcore ios";
-		};
-		40557AE81A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6B5AE0219F630B3001352A6;
-			remoteInfo = unittest;
-		};
-		40557AEA1A343C8300F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C600B6141A242C3F000728F1;
-			remoteInfo = unittestcpp;
-		};
-		40557AF31A343D0A00F845C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C6BD288C170BD71100A91AC1;
-			remoteInfo = "mailcore osx";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,8 +45,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				40CF584D1A62574600822244 /* KeychainAccess.framework in CopyFiles */,
-				4022DB1C1A343F1800F35B1F /* MailCore.framework in CopyFiles */,
+				D12B02851A70BD890047F264 /* MailCore.framework in CopyFiles */,
+				D12B02811A70BD390047F264 /* KeychainAccess.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +65,6 @@
 		40557AC11A343C4C00F845C2 /* EmailNotifierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmailNotifierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40557AC61A343C4C00F845C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40557AC71A343C4C00F845C2 /* EmailNotifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotifierTests.swift; sourceTree = "<group>"; };
-		40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "../../mailcore2/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
 		40557AF11A343D0700F845C2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		40557AF71A343DC500F845C2 /* ObjectiveCBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveCBridgingHeader.h; sourceTree = "<group>"; };
 		40989C291A34AF7F00E8491D /* EmailListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailListController.swift; sourceTree = "<group>"; };
@@ -137,7 +73,8 @@
 		40C69AF61A41B129009F0441 /* SettingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
 		40C85AAF1A66C90900E14B40 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		40CF580F1A624F0F00822244 /* EmailListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailListView.xib; sourceTree = "<group>"; };
-		40CF584A1A6256C100822244 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../KeychainAccess/Lib/build/Debug/KeychainAccess.framework; sourceTree = "<group>"; };
+		D12B027E1A70BD340047F264 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = ../KeychainAccess/Lib/DerivedData/KeychainAccess/Build/Products/Release/KeychainAccess.framework; sourceTree = "<group>"; };
+		D12B02821A70BD850047F264 /* MailCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MailCore.framework; path = "../mailcore2/build-mac/DerivedData/mailcore2/Build/Products/Release/MailCore.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40557AF21A343D0700F845C2 /* Security.framework in Frameworks */,
-				40CF584B1A6256C100822244 /* KeychainAccess.framework in Frameworks */,
-				40557AF01A343D0200F845C2 /* MailCore.framework in Frameworks */,
+				D12B027D1A70BD1A0047F264 /* Security.framework in Frameworks */,
+				D12B02801A70BD390047F264 /* KeychainAccess.framework in Frameworks */,
+				D12B02841A70BD890047F264 /* MailCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +130,8 @@
 		40557AA81A343C4C00F845C2 = {
 			isa = PBXGroup;
 			children = (
-				40CF584A1A6256C100822244 /* KeychainAccess.framework */,
+				D12B02821A70BD850047F264 /* MailCore.framework */,
+				D12B027E1A70BD340047F264 /* KeychainAccess.framework */,
 				40557AF11A343D0700F845C2 /* Security.framework */,
 				40557AB31A343C4C00F845C2 /* EmailNotifier */,
 				40557AC41A343C4C00F845C2 /* EmailNotifierTests */,
@@ -222,7 +160,6 @@
 				40557AB61A343C4C00F845C2 /* AppDelegate.swift */,
 				40557AF71A343DC500F845C2 /* ObjectiveCBridgingHeader.h */,
 				40557AB81A343C4C00F845C2 /* Images.xcassets */,
-				40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */,
 			);
 			path = EmailNotifier;
 			sourceTree = "<group>";
@@ -250,21 +187,6 @@
 				40557AC61A343C4C00F845C2 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		40557AD21A343C8300F845C2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				40557ADD1A343C8300F845C2 /* libMailCore.a */,
-				40557ADF1A343C8300F845C2 /* libMailCore-ios.a */,
-				40557AE11A343C8300F845C2 /* tests */,
-				40557AE31A343C8300F845C2 /* test-ios.app */,
-				40557AE51A343C8300F845C2 /* MailCore.framework */,
-				40557AE71A343C8300F845C2 /* MailCore.framework */,
-				40557AE91A343C8300F845C2 /* unittest.xctest */,
-				40557AEB1A343C8300F845C2 /* unittestcpp */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		40C69AF51A41AD68009F0441 /* Service */ = {
@@ -299,7 +221,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				40557AF41A343D0A00F845C2 /* PBXTargetDependency */,
 			);
 			name = EmailNotifier;
 			productName = EmailNotifier;
@@ -353,12 +274,6 @@
 			mainGroup = 40557AA81A343C4C00F845C2;
 			productRefGroup = 40557AB21A343C4C00F845C2 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 40557AD21A343C8300F845C2 /* Products */;
-					ProjectRef = 40557AD11A343C8300F845C2 /* mailcore2.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				40557AB01A343C4C00F845C2 /* EmailNotifier */,
@@ -366,65 +281,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		40557ADD1A343C8300F845C2 /* libMailCore.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMailCore.a;
-			remoteRef = 40557ADC1A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557ADF1A343C8300F845C2 /* libMailCore-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libMailCore-ios.a";
-			remoteRef = 40557ADE1A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AE11A343C8300F845C2 /* tests */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = tests;
-			remoteRef = 40557AE01A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AE31A343C8300F845C2 /* test-ios.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "test-ios.app";
-			remoteRef = 40557AE21A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AE51A343C8300F845C2 /* MailCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MailCore.framework;
-			remoteRef = 40557AE41A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AE71A343C8300F845C2 /* MailCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MailCore.framework;
-			remoteRef = 40557AE61A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AE91A343C8300F845C2 /* unittest.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = unittest.xctest;
-			remoteRef = 40557AE81A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40557AEB1A343C8300F845C2 /* unittestcpp */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = unittestcpp;
-			remoteRef = 40557AEA1A343C8300F845C2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		40557AAF1A343C4C00F845C2 /* Resources */ = {
@@ -479,11 +335,6 @@
 			isa = PBXTargetDependency;
 			target = 40557AB01A343C4C00F845C2 /* EmailNotifier */;
 			targetProxy = 40557AC21A343C4C00F845C2 /* PBXContainerItemProxy */;
-		};
-		40557AF41A343D0A00F845C2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "mailcore osx";
-			targetProxy = 40557AF31A343D0A00F845C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -573,6 +424,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../mailcore2/build-mac/build/Debug",
 					/Users/vitaliyladan/dev/KeychainAccess/Lib/build/Debug,
+					"$(PROJECT_DIR)",
+					/Users/vitaliy.ladan/Documents/email/KeychainAccess/Lib/DerivedData/KeychainAccess/Build/Products/Release,
+					"/Users/vitaliy.ladan/Documents/email/mailcore2/build-mac/DerivedData/mailcore2/Build/Products/Release",
 				);
 				INFOPLIST_FILE = EmailNotifier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -589,6 +443,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../mailcore2/build-mac/build/Debug",
 					/Users/vitaliyladan/dev/KeychainAccess/Lib/build/Debug,
+					"$(PROJECT_DIR)",
+					/Users/vitaliy.ladan/Documents/email/KeychainAccess/Lib/DerivedData/KeychainAccess/Build/Products/Release,
+					"/Users/vitaliy.ladan/Documents/email/mailcore2/build-mac/DerivedData/mailcore2/Build/Products/Release",
 				);
 				INFOPLIST_FILE = EmailNotifier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
